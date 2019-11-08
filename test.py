@@ -16,27 +16,27 @@ addLanguageTable = """CREATE TABLE IF NOT EXISTS `languages` (
 	`name` varchar(255),
 	`type` varchar(255),
 	`script` varchar(255),
-	`description` varchar(255),
 	PRIMARY KEY( `id` )
 );"""
 
 def addTables():
     cursor.execute(addLanguageTable)
 
-addTables
+addTables()
 
     
 
+
+
 add_language = "INSERT INTO languages VALUES (NULL,%s,%s,%s);"
 
-
-
-with open("5e-SRD-Languages.json", "r") as read_file:
+with open("data/5e-SRD-Languages.json", "r") as read_file:
     languageArray = json.load(read_file)
     for language in languageArray:
         _name = language['name']
         _type = language['type']
         _script = language['script']
+        cursor.execute(add_language, (_name, _type, _script))
         
 
 
