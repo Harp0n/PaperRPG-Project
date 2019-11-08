@@ -11,8 +11,25 @@ mydb = mysql.connector.connect(
 )
 cursor = mydb.cursor()
 
+addLanguageTable = """CREATE TABLE IF NOT EXISTS `languages` (
+	`id` int(10) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255),
+	`type` varchar(255),
+	`script` varchar(255),
+	`description` varchar(255),
+	PRIMARY KEY( `id` )
+);"""
 
-add_language = "INSERT INTO languages VALUES (NULL,%s,%s,%s))
+def addTables():
+    cursor.execute(addLanguageTable)
+
+addTables
+
+    
+
+add_language = "INSERT INTO languages VALUES (NULL,%s,%s,%s);"
+
+
 
 with open("5e-SRD-Languages.json", "r") as read_file:
     languageArray = json.load(read_file)
@@ -26,12 +43,12 @@ with open("5e-SRD-Languages.json", "r") as read_file:
 
 ##command = ("""INSERT INTO languages VALUES (NULL, 'Common', 'Standard', 'Common');""")
 ##cursor.execute(command)
-##
-##
-##
-##
-##
-##mydb.commit()
+
+
+
+
+
+mydb.commit()
 
 cursor.close()
 mydb.close()
