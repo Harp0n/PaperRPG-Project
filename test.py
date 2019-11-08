@@ -58,7 +58,6 @@ def generateData():
             else:
                 _ability_bonus_options_count = 0
             if "choose" in  race['starting_proficiency_options']:
-            if(tmp != ""):
                 _starting_proficiences_options_count = race['starting_proficiency_options']['choose']
             else:
                 _starting_proficiences_options_count = 0
@@ -71,25 +70,28 @@ def generateData():
                 _isOptional = False
                 parameters = (_bonus, _idRace, _idAbility, _isOptional)
                 cursor.execute(queryRaceAbilities, parameters)
-                
-            for ability_bonus in race['ability_bonus_options']:
-                _bonus = ability_bonus['bonus']
-                _idAbility = ability_bonus['url'].split("/")[-1]
-                _isOptional = True
-                parameters = (_bonus, _idRace, _idAbility, _isOptional)
-                cursor.execute(queryRaceAbilities, parameters)
+
+            if('from' in race['ability_bonus_options']):
+                for ability_bonus in race['ability_bonus_options']['from']:
+                    _bonus = ability_bonus['bonus']
+                    _idAbility = ability_bonus['url'].split("/")[-1]
+                    _isOptional = True
+                    parameters = (_bonus, _idRace, _idAbility, _isOptional)
+                    cursor.execute(queryRaceAbilities, parameters)
+
                 
             for starting_proficiency in race['starting_proficiencies']:
                 _isOptional = False
                 _idProficiency = starting_proficiency['url'].split("/")[-1]
                 parameters = (_isOptional, _idRace, _idProficiency)
                 cursor.execute(queryRaceStartingProficiency, parameters)
-                
-            for starting_proficiency in race['starting_proficiency_options']['from']:
-                _isOptional = True
-                _idProficiency = starting_proficiency['url'].split("/")[-1]
-                parameters = (_isOptional, _idRace, _idProficiency)
-                cursor.execute(queryRaceStartingProficiency, parameters)
+
+            if('from' in race['starting_proficiency_options']):
+                for starting_proficiency in race['starting_proficiency_options']['from']:
+                    _isOptional = True
+                    _idProficiency = starting_proficiency['url'].split("/")[-1]
+                    parameters = (_isOptional, _idRace, _idProficiency)
+                    cursor.execute(queryRaceStartingProficiency, parameters)
 
             
 addTables()
