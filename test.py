@@ -5,7 +5,7 @@ import json
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
-  password="Biedro123",
+  password="haslo1",
   database='RPG',
   auth_plugin='mysql_native_password'
 )
