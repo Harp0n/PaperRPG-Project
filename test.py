@@ -20,6 +20,7 @@ addLanguageTable = """CREATE TABLE IF NOT EXISTS `languages` (
 );"""
 
 def addTables():
+    cursor.execute("DROP TABLE IF EXISTS languages;")
     cursor.execute(addLanguageTable)
 
 addTables()
