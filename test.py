@@ -1,5 +1,6 @@
 import mysql.connector
-import json 
+import json
+import re
 
 
 mydb = mysql.connector.connect(
@@ -20,25 +21,39 @@ addLanguageTable = """CREATE TABLE IF NOT EXISTS `languages` (
 );"""
 
 def addTables():
-    cursor.execute("DROP TABLE IF EXISTS languages;")
-    cursor.execute(addLanguageTable)
+    with open("tables.txt", "r") as read_file:
+        data = read_file.read()
+        
+        for query in data.split(';'):
+            if(query!=''):
+                final_query = query+';'
 
+                lines=final_query.split('\n')
+                for line in lines:
+                    result = re.search("CREATE TABLE `(.*)`",line)
+                    if(result != None):
+                        tableName = result.group(1)
+                        dropQuery = "DROP TABLE IF EXISTS " + tableName + ";"
+                        cursor.execute(dropQuery)
+                
+                cursor.execute(final_query)
+                
 addTables()
 
     
 
 
 
-add_language = "INSERT INTO languages VALUES (NULL,%s,%s,%s);"
+##add_language = "INSERT INTO languages VALUES (NULL,%s,%s,%s);"
 
-with open("data/5e-SRD-Languages.json", "r") as read_file:
-    languageArray = json.load(read_file)
-    for language in languageArray:
-        _name = language['name']
-        _type = language['type']
-        _script = language['script']
-        cursor.execute(add_language, (_name, _type, _script))
-        
+##with open("data/5e-SRD-Languages.json", "r") as read_file:
+##    languageArray = json.load(read_file)
+##    for language in languageArray:
+##        _name = language['name']
+##        _type = language['type']
+##        _script = language['script']
+##        cursor.execute(add_language, (_name, _type, _script))
+##        
 
 
 
