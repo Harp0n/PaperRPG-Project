@@ -299,7 +299,7 @@ CREATE TABLE `races`
  `age`                                 text NOT NULL ,
  `size`                                varchar(45) NOT NULL ,
  `size_description`                    text NOT NULL ,
- `starting_proficiences_count`         int NOT NULL ,
+ `ability_bonus_options_count` int NOT NULL ,
  `starting_proficiences_options_count` int NOT NULL ,
 
 PRIMARY KEY (`idRace`)
