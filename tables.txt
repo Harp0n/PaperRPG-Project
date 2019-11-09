@@ -572,3 +572,31 @@ CREATE TABLE `skills`
 
 PRIMARY KEY (`idSkill`)
 );
+
+
+-- ************************************** `proficiences`
+
+CREATE TABLE `proficiences`
+(
+ `idProficiency` int NOT NULL AUTO_INCREMENT ,
+ `type`          varchar(45) NOT NULL ,
+ `name`          varchar(45) NOT NULL ,
+
+PRIMARY KEY (`idProficiency`)
+);
+
+
+
+
+
+
+-- ************************************** `magicSchools`
+
+CREATE TABLE `magicSchools`
+(
+ `idSchool` int NOT NULL AUTO_INCREMENT ,
+ `name`     varchar(45) NOT NULL ,
+ `desc`     text NOT NULL ,
+
+PRIMARY KEY (`idSchool`)
+);

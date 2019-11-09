@@ -92,7 +92,28 @@ def generateData():
                     _idProficiency = starting_proficiency['url'].split("/")[-1]
                     parameters = (_isOptional, _idRace, _idProficiency)
                     cursor.execute(queryRaceStartingProficiency, parameters)
-
+    with open("data/5e-SRD-Proficiencies.json", "r") as read_file:
+        
+        query = "INSERT INTO proficiences VALUES (NULL,%s,%s);"
+        data = json.load(read_file)
+        for proficiency in data:
+            _type = proficiency['type']
+            _name = proficiency['name']
+            parameters = (_type, _name)
+            cursor.execute(query,parameters)
+    with open("data/5e-SRD-Ability-Scores.json", "r") as read_file:
+        query = "INSERT INTO abilities VALUES (NULL,%s,%s,%s);"
+        data = json.load(read_file)
+        for proficiency in data:
+            parameters = []
+            parameters.append(proficiency['name'])
+            parameters.append(proficiency['full_name'])
+            desc = ""
+            for line in proficiency['desc']:
+                desc += (line + "\n")
+            parameters.append(desc)
+            parameters = tuple(parameters)
+            cursor.execute(query,parameters)
             
 addTables()
 generateData()    
