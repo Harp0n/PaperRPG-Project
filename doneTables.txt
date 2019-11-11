@@ -2,4 +2,5 @@ Ability-Scores
 Proficiencies
 Races
 Conditions
+Languages
 
