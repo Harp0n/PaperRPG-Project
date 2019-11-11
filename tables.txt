@@ -47,9 +47,9 @@ PRIMARY KEY (`id`)
 
 
 
--- ************************************** `classProficienies`
+-- ************************************** `classProficiencies`
 
-CREATE TABLE `classProficienies`
+CREATE TABLE `classProficiencies`
 (
  `id`            int NOT NULL AUTO_INCREMENT ,
  `idClass`       int NOT NULL ,
