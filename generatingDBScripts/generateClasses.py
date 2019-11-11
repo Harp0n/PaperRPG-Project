@@ -3,20 +3,38 @@ import json
 
 def generate():
     with open("data/55e-SRD-Classes.json", "r") as read_file:
-            queryRaces = "INSERT INTO classes VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s);"
+            queryClasses = "INSERT INTO classes VALUES (NULL,%s,%s,%s);"
+            queryClassProficiences = "INSERT INTO classproficiencies VALUES (NULL,%s,%s,%s);"
+            queryClassSavingThrows = "INSERT INTO classesclasssavingthrows VALUES (NULL,%s,%s);"
             data = json.load(read_file)
             for c in data:
+                _idClass = c['index']
                 _name = c['name']
                 _hitDie = c['hit_die']
-                if('choose' in c['proficiency_choices'])
-                    _proficiencyChoicesCount = c['proficiency_choices']['chose']
-
-
+                if('choose' in c['proficiency_choices']):
+                    _proficiencyChoicesCount = c['proficiency_choices']['choose']
+                else:
+                    _proficiencyChoicesCount = 0
+                parameters = (_name, _hitDie, _proficiencyChoicesCount)
+                cursor.execute(queryClasses, parameters)
+                #------------proficiencies--------------
                 if('from' in c['proficiency_choices']):
-                    for proficiency in c['proficiencies']:
-
+                    for proficiency in c['proficiency_choices']['from']:
+                        _idProficiency = proficiency['url'].split("/")[-1]
+                        _isOptional = True
+                        parameters = (_idClass, _idProficiency, _isOptional)
+                        cursor.execute(queryClassProficiences,parameters)
 
                 for proficiency in c['proficiencies']:
+                        _idProficiency = proficiency['url'].split("/")[-1]
+                        _isOptional = False
+                        parameters = (_idClass, _idProficiency, _isOptional)
+                        cursor.execute(queryClassProficiences,parameters)
+                #-----------saving throws--------------------------
+                for savingThrow in c['saving_throws']:
+                        _idAbility = savingThrow['url'].split("/")[-1]
+                        parameters = (_idClass, _idAbility)
+                        cursor.execute(queryClassSavingThrows,parameters)
 
                 
 
