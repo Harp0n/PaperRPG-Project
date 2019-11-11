@@ -1,0 +1,602 @@
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `classes`
+
+CREATE TABLE `classes`
+(
+ `idClass`                   int NOT NULL AUTO_INCREMENT ,
+ `name`                      varchar(45) NOT NULL ,
+ `hit_die`                   int NOT NULL ,
+ `proficiency_choices_count` int NOT NULL ,
+
+PRIMARY KEY (`idClass`)
+);
+
+
+
+
+
+
+-- ************************************** `abilities`
+
+CREATE TABLE `abilities`
+(
+ `idAbility` int NOT NULL AUTO_INCREMENT ,
+ `name`      varchar(10) NOT NULL ,
+ `full_name` varchar(45) NOT NULL ,
+ `desc`      text NOT NULL ,
+PRIMARY KEY (`idAbility`)
+);
+
+
+-- ************************************** `classSavingThrows`
+
+CREATE TABLE `classSavingThrows`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `idClass`   int NOT NULL ,
+ `idAbility` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `classProficiencyChoices`
+
+CREATE TABLE `classProficiencyChoices`
+(
+ `id`            int NOT NULL AUTO_INCREMENT ,
+ `idClass`       int NOT NULL ,
+ `idProficiency` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+-- ************************************** `conditions`
+
+CREATE TABLE `conditions`
+(
+ `idCondition` int NOT NULL AUTO_INCREMENT ,
+ `name`        varchar(45) NOT NULL ,
+ `desc`        text NOT NULL ,
+
+PRIMARY KEY (`idCondition`)
+);
+
+
+
+
+
+
+-- ************************************** `classSubclasses`
+
+CREATE TABLE `classSubclasses`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `idClass`   int NOT NULL ,
+ `className` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `equipmentCategories`
+
+CREATE TABLE `equipmentCategories`
+(
+ `idEqCategory` int NOT NULL AUTO_INCREMENT ,
+ `category`     varchar(45) NOT NULL ,
+
+PRIMARY KEY (`idEqCategory`)
+);
+
+
+
+
+
+
+-- ************************************** `damageTypes`
+
+CREATE TABLE `damageTypes`
+(
+ `idDamageType` int NOT NULL AUTO_INCREMENT ,
+ `name`         varchar(45) NOT NULL ,
+ `desc`         text NOT NULL ,
+
+PRIMARY KEY (`idDamageType`)
+);
+
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `languages`
+
+CREATE TABLE `languages`
+(
+ `idLanguage` int NOT NULL AUTO_INCREMENT ,
+ `name`       varchar(45) NOT NULL ,
+ `type`       varchar(45) NOT NULL ,
+
+PRIMARY KEY (`idLanguage`)
+);
+
+
+
+
+
+
+-- ************************************** `features`
+
+CREATE TABLE `features`
+(
+ `idFeature` int NOT NULL AUTO_INCREMENT ,
+ `className` varchar(45) NOT NULL ,
+ `name`      varchar(45) NOT NULL ,
+ `level`     int NOT NULL ,
+ `desc`      text NOT NULL ,
+
+PRIMARY KEY (`idFeature`)
+);
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `levels`
+
+CREATE TABLE `levels`
+(
+ `className`             varchar(45) NOT NULL ,
+ `id`                    int NOT NULL AUTO_INCREMENT ,
+ `level`                 int NOT NULL ,
+ `ability_score_bonuses` int NOT NULL ,
+ `prof_bonus`            int NOT NULL ,
+ `cantrips_known`        int NOT NULL ,
+ `spells_known`          int NOT NULL ,
+ `spell_slots_level_1`   int unsigned NOT NULL ,
+ `spell_slots_level_2`   int NOT NULL ,
+ `spell_slots_level_3`   int NOT NULL ,
+ `spell_slots_level_4`   int NOT NULL ,
+ `spell_slots_level_5`   int NOT NULL ,
+ `spell_slots_level_6`   int NOT NULL ,
+ `spell_slots_level_7`   int NOT NULL ,
+ `spell_slots_level_8`   int NOT NULL ,
+ `spell_slots_level_9`   int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `levelFeatures`
+
+CREATE TABLE `levelFeatures`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `className` varchar(45) NOT NULL ,
+ `idFeature` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `levels`
+
+CREATE TABLE `levels`
+(
+ `className`             varchar(45) NOT NULL ,
+ `id`                    int NOT NULL AUTO_INCREMENT ,
+ `level`                 int NOT NULL ,
+ `ability_score_bonuses` int NOT NULL ,
+ `prof_bonus`            int NOT NULL ,
+ `cantrips_known`        int NOT NULL ,
+ `spells_known`          int NOT NULL ,
+ `spell_slots_level_1`   int unsigned NOT NULL ,
+ `spell_slots_level_2`   int NOT NULL ,
+ `spell_slots_level_3`   int NOT NULL ,
+ `spell_slots_level_4`   int NOT NULL ,
+ `spell_slots_level_5`   int NOT NULL ,
+ `spell_slots_level_6`   int NOT NULL ,
+ `spell_slots_level_7`   int NOT NULL ,
+ `spell_slots_level_8`   int NOT NULL ,
+ `spell_slots_level_9`   int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `levelFeatures`
+
+CREATE TABLE `levelFeatures`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `className` varchar(45) NOT NULL ,
+ `idFeature` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `raceLanguages`
+
+CREATE TABLE `raceLanguages`
+(
+ `id`         int NOT NULL AUTO_INCREMENT ,
+ `idRace`     int NOT NULL ,
+ `idLanguage` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `raceAbilities`
+
+CREATE TABLE `raceAbilities`
+(
+ `id`         int NOT NULL AUTO_INCREMENT ,
+ `bonus`      int NOT NULL ,
+ `idRace`     int NOT NULL ,
+ `idAbility`  int NOT NULL ,
+ `isOptional` binary NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `races`
+
+CREATE TABLE `races`
+(
+ `idRace`                              int NOT NULL AUTO_INCREMENT ,
+ `name`                                varchar(45) NOT NULL ,
+ `speed`                               int NOT NULL ,
+ `alignment`                           text NOT NULL ,
+ `age`                                 text NOT NULL ,
+ `size`                                varchar(45) NOT NULL ,
+ `size_description`                    text NOT NULL ,
+ `ability_bonus_options_count` int NOT NULL ,
+ `starting_proficiences_options_count` int NOT NULL ,
+
+PRIMARY KEY (`idRace`)
+);
+
+
+
+
+
+
+-- ************************************** `racesNames`
+
+CREATE TABLE `racesNames`
+(
+ `className` varchar(45) NOT NULL ,
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `idClass`   int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `raceTraits`
+
+CREATE TABLE `raceTraits`
+(
+ `id`      int NOT NULL AUTO_INCREMENT ,
+ `idRace`  int NOT NULL ,
+ `idTrait` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `raceSubraces`
+
+CREATE TABLE `raceSubraces`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `idRace`    int NOT NULL ,
+ `idSubrace` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `traits`
+
+CREATE TABLE `traits`
+(
+ `idTrait` int NOT NULL AUTO_INCREMENT ,
+ `name`    varchar(45) NOT NULL ,
+ `desc`    text NOT NULL ,
+
+PRIMARY KEY (`idTrait`)
+);
+
+
+
+
+
+
+-- ************************************** `subraceTraits`
+
+CREATE TABLE `subraceTraits`
+(
+ `id`         int NOT NULL AUTO_INCREMENT ,
+ `isOptional` binary NOT NULL ,
+ `idSubrace`  int NOT NULL ,
+ `idTrait`    int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `subraces`
+
+CREATE TABLE `subraces`
+(
+ `idSubrace`                 int NOT NULL AUTO_INCREMENT ,
+ `name`                      varchar(45) NOT NULL ,
+ `desc`                      text NOT NULL ,
+ `trait_options_count`       int NOT NULL ,
+ `proficiency_options_count` int NOT NULL ,
+
+PRIMARY KEY (`idSubrace`)
+);
+
+
+
+
+
+
+-- ************************************** `subraceStartingProficiences`
+
+CREATE TABLE `subraceStartingProficiences`
+(
+ `id`              int NOT NULL AUTO_INCREMENT ,
+ `isOptional`      binary NOT NULL ,
+ `idProficiency`   int NOT NULL ,
+ `idProficiency_1` int NOT NULL ,
+
+PRIMARY KEY (`id`),
+KEY `fkIdx_419` (`idProficiency`)
+);
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `subraceAbilities`
+
+CREATE TABLE `subraceAbilities`
+(
+ `id`         int NOT NULL AUTO_INCREMENT ,
+ `bonus`      int NOT NULL ,
+ `isOptional` binary NOT NULL ,
+ `idSubrace`  int NOT NULL ,
+ `idAbility`  int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+
+
+
+
+-- ************************************** `subclassFeatures`
+
+CREATE TABLE `subclassFeatures`
+(
+ `id`        int NOT NULL AUTO_INCREMENT ,
+ `className` varchar(45) NOT NULL ,
+ `idFeature` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `subclasses`
+
+CREATE TABLE `subclasses`
+(
+ `className`       varchar(45) NOT NULL ,
+ `idSubclass`      int NOT NULL AUTO_INCREMENT ,
+ `name`            varchar(45) NOT NULL ,
+ `subclass_flavor` varchar(45) NOT NULL ,
+ `desc`            text NOT NULL ,
+
+PRIMARY KEY (`idSubclass`)
+);
+
+
+
+
+
+
+-- ************************************** `starting_proficiences`
+
+CREATE TABLE `starting_proficiences`
+(
+ `id`            int NOT NULL AUTO_INCREMENT ,
+ `isOptional`    binary NOT NULL ,
+ `idRace`        int NOT NULL ,
+ `idProficiency` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `spells`
+
+CREATE TABLE `spells`
+(
+ `idSpell`       int NOT NULL AUTO_INCREMENT ,
+ `name`          varchar(45) NOT NULL ,
+ `desc`          text NOT NULL ,
+ `higherLevel`   text NOT NULL ,
+ `page`          varchar(45) NOT NULL ,
+ `range`         int NOT NULL ,
+ `components`    varchar(45) NOT NULL ,
+ `material`      text NOT NULL ,
+ `ritual`        binary NOT NULL ,
+ `duration`      varchar(45) NOT NULL ,
+ `concentration` binary NOT NULL ,
+ `castingTime`   text NOT NULL ,
+ `lvl`           int NOT NULL ,
+ `idSchool`      int NOT NULL ,
+
+PRIMARY KEY (`idSpell`)
+);
+
+
+
+
+
+
+-- ************************************** `spellClasses`
+
+CREATE TABLE `spellClasses`
+(
+ `id`      int NOT NULL AUTO_INCREMENT ,
+ `idSpell` int NOT NULL ,
+ `idClass` int NOT NULL ,
+
+PRIMARY KEY (`id`)
+);
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `spellcasting`
+
+CREATE TABLE `spellcasting`
+(
+ `idSpellcasting`         int NOT NULL AUTO_INCREMENT ,
+ `level`                  int NOT NULL ,
+ `spellcasting_abilityId` int NOT NULL ,
+ `info`                   text NOT NULL ,
+ `idClass`                int NOT NULL ,
+
+PRIMARY KEY (`idSpellcasting`)
+);
+
+
+
+
+
+
+-- ************************************** `skills`
+
+CREATE TABLE `skills`
+(
+ `name`      varchar(45) NOT NULL ,
+ `idSkill`   int NOT NULL AUTO_INCREMENT ,
+ `desc`      text NOT NULL ,
+ `idAbility` int NOT NULL ,
+
+PRIMARY KEY (`idSkill`)
+);
+
+
+-- ************************************** `proficiences`
+
+CREATE TABLE `proficiences`
+(
+ `idProficiency` int NOT NULL AUTO_INCREMENT ,
+ `type`          varchar(45) NOT NULL ,
+ `name`          varchar(45) NOT NULL ,
+
+PRIMARY KEY (`idProficiency`)
+);
+
+
+
+
+
+
+-- ************************************** `magicSchools`
+
+CREATE TABLE `magicSchools`
+(
+ `idSchool` int NOT NULL AUTO_INCREMENT ,
+ `name`     varchar(45) NOT NULL ,
+ `desc`     text NOT NULL ,
+
+PRIMARY KEY (`idSchool`)
+);
