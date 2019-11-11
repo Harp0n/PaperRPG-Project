@@ -4,13 +4,14 @@ import re
 
 from connectDB import db, cursor, saveDB, closeDB
 import createTables
-import generateRaces, generateProficiencies, generateAbilityScores
+import generateRaces, generateProficiencies, generateAbilityScores, generateEqCategories
 
     
 def generateData():
     generateRaces.generate()
     generateProficiencies.generate()
     generateAbilityScores.generate()
+    generateEqCategories.generate()
             
 if __name__ == "__main__":
     createTables.create()
