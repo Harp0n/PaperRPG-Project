@@ -151,6 +151,7 @@ CREATE TABLE `features`
  `name`      varchar(45) NOT NULL ,
  `level`     int NOT NULL ,
  `desc`      text NOT NULL ,
+ `choosingAmount` int NOT NULL ,
 
 PRIMARY KEY (`idFeature`)
 );

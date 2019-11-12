@@ -6245,7 +6245,7 @@
         },
         {
           "url": "http://www.dnd5eapi.co/api/features/359",
-          "name": "Eldritch Invocation: Voice of the Chain Master"
+          "name": "Eldritch Invocation: Voice of TheChainMaster"
         }
       ]
     },
@@ -6513,7 +6513,7 @@
       "name": "Warlock"
     },
     "subclass": {},
-    "name": "Eldritch Invocation: Voice of the Chain Master",
+    "name": "Eldritch Invocation:Voice of the ChainMaster",
     "level": 2,
     "prerequisites": [
       {
@@ -6841,7 +6841,7 @@
       "name": "Warlock"
     },
     "subclass": {},
-    "name": "Eldritch Invocation: Visions of Distant Realms",
+    "name": "Eldritch Invocation:Visions of DistantRealms",
     "level": 15,
     "prerequisites": [
       {

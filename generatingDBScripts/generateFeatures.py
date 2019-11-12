@@ -3,8 +3,7 @@ import json
 
 def generate():
     with open ("data/5e-SRD-Features.json") as read_file:
-        queryFeature = "INSERT INTO features VALUES (NULL,%s,%s,%s,%s)"
-        queryChoice = "INSERT INTO "
+        query = "INSERT INTO features VALUES (NULL,%s,%s,%s,%s,%s)"        
         data = json.load(read_file)
         for feature in data:
             parameters = []
@@ -21,8 +20,12 @@ def generate():
             parameters.append(desc)
             if(len(feature["name"]) > 45): 
                 print(feature["name"] + " " + str(len(feature["name"])) + "\n")
+            if('choice' in feature):
+                parameters.append(feature["choice"]["choose"])
+            else:
+                parameters.append(0)
             parameters = tuple(parameters)
-           # cursor.execute(query,parameters)
+            cursor.execute(query,parameters)
 
 
 
