@@ -5,7 +5,7 @@ from connectDB import db, cursor, saveDB, closeDB
 
 def generate():
     with open ("data/5e-SRD-Languages.json", "r") as read_file:
-        query = "INSERT INTO languages VALUE (NULL,%s,%s);"
+        query = "INSERT INTO languages VALUES (NULL,%s,%s);"
         data = json.load(read_file)
         for language in data:
             parameters = []

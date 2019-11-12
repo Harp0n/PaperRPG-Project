@@ -1768,7 +1768,7 @@
       "name": "Druid"
     },
     "subclass": {},
-    "name": "Wild Shape (CR 1/4 or below, no flying or swim speed)",
+    "name": "Wild Shape",
     "level": 2,
     "desc": [
       "Starting at 2nd level, you can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice. You regain expended uses when you finish a short or long rest.",
@@ -4377,7 +4377,7 @@
       "url": "http://www.dnd5eapi.co/api/subclasses/8",
       "name": "Hunter"
     },
-    "name": "Superior Hunter's Defense: Stand Against the Tide",
+    "name": "Superior Hunter's Defense:StandAgainstTheTide",
     "level": 15,
     "desc": [
       "When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature (other than itself) of your choice."
