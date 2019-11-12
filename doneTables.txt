@@ -2,4 +2,5 @@ Ability-Scores
 Classes
 Proficiencies
 Races
-
+magicSchools
+eqCategories
