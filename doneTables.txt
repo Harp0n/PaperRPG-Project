@@ -1,7 +1,11 @@
 Ability-Scores
+Conditions
+Classes -> TODO ADD STARTING EQUIPMENT
+DamageTypes
+eqCategories
+Features
+Languages
+Levels
+magicSchools
 Proficiencies
 Races
-Conditions
-Languages
-Features
-

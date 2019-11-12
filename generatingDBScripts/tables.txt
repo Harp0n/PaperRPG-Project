@@ -47,13 +47,12 @@ PRIMARY KEY (`id`)
 
 
 
--- ************************************** `classProficiencyChoices`
-
-CREATE TABLE `classProficiencyChoices`
+CREATE TABLE `classProficiencies`
 (
  `id`            int NOT NULL AUTO_INCREMENT ,
  `idClass`       int NOT NULL ,
  `idProficiency` int NOT NULL ,
+ `isOptional` binary NOT NULL ,
 
 PRIMARY KEY (`id`)
 );
@@ -151,6 +150,7 @@ CREATE TABLE `features`
  `name`      varchar(45) NOT NULL ,
  `level`     int NOT NULL ,
  `desc`      text NOT NULL ,
+ `choosingAmount` int NOT NULL ,
 
 PRIMARY KEY (`idFeature`)
 );
