@@ -1,5 +1,7 @@
 Ability-Scores
-Classes
+Classes -> TODO ADD STARTING EQUIPMENT
+DamageTypes
+Levels
 Proficiencies
 Races
 
