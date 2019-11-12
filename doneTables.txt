@@ -1,6 +1,7 @@
 Ability-Scores
 Conditions
 Classes -> TODO ADD STARTING EQUIPMENT
+Conditions
 DamageTypes
 eqCategories
 Features
@@ -9,3 +10,5 @@ Levels
 magicSchools
 Proficiencies
 Races
+Skills
+Traits
