@@ -11,4 +11,6 @@ magicSchools
 Proficiencies
 Races
 Skills
+Spellcasting
+Subclasses
 Traits
