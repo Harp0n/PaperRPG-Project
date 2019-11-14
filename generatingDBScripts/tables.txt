@@ -508,11 +508,13 @@ CREATE TABLE `spells`
  `idSpell`       int NOT NULL AUTO_INCREMENT ,
  `name`          varchar(45) NOT NULL ,
  `desc`          text NOT NULL ,
- `higherLevel`   text NOT NULL ,
+ `dice`          varchar(45),
+ `dmgType`       varchar(45),
+ `higherLevels`  text,
  `page`          varchar(45) NOT NULL ,
- `range`         int NOT NULL ,
- `components`    varchar(45) NOT NULL ,
- `material`      text NOT NULL ,
+ `range`         varchar(45) NOT NULL ,
+ `components`    varchar(45),
+ `material`      text,
  `ritual`        binary NOT NULL ,
  `duration`      varchar(45) NOT NULL ,
  `concentration` binary NOT NULL ,
@@ -599,4 +601,20 @@ CREATE TABLE `magicSchools`
  `desc`     text NOT NULL ,
 
 PRIMARY KEY (`idSchool`)
+);
+
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `spellSubclasses`
+
+CREATE TABLE `spellSubclasses`
+(
+ `idSpellSubclasses` int NOT NULL AUTO_INCREMENT ,
+ `idClass`           int NOT NULL ,
+ `idSpell`           int NOT NULL ,
+
+PRIMARY KEY (`idSpellSubclasses`)
 );
