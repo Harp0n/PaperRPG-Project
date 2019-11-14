@@ -601,3 +601,29 @@ CREATE TABLE `magicSchools`
 
 PRIMARY KEY (`idSchool`)
 );
+
+
+
+CREATE TABLE 'weaponProperties'
+(
+ `idWeaponProp`                   int NOT NULL AUTO_INCREMENT ,
+ `name`                      varchar(45) NOT NULL ,
+ `desc`			 text NOT NULL ,
+
+PRIMARY KEY (`idWeaponProp`)
+);
+
+-- ****************** SqlDBM: MySQL ******************;
+-- ***************************************************;
+
+
+-- ************************************** `spellSubclasses`
+
+CREATE TABLE `spellSubclasses`
+(
+ `idSpellSubclasses` int NOT NULL AUTO_INCREMENT ,
+ `idClass`           int NOT NULL ,
+ `idSpell`           int NOT NULL ,
+
+PRIMARY KEY (`idSpellSubclasses`)
+);
