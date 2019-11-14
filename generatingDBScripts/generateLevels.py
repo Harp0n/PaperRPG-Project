@@ -79,7 +79,7 @@ def generate():
                         spell_slots_level_8 = 0
 
                     if('spell_slots_level_9' in sc):
-                        spell_slots_level_9 = sc['spell_slots_level_9']
+                        spell_slots_level_9 = sc['spell_slots_level_9'] 
                     else:
                         spell_slots_level_9 = 0
                     parameters = (_className, _level, _abilityScoreBonuses, _profBonus, cantrips_known, spells_known, spell_slots_level_1, spell_slots_level_2,
