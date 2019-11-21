@@ -147,7 +147,7 @@ CREATE TABLE `features`
 (
  `idFeature` int NOT NULL AUTO_INCREMENT ,
  `className` varchar(45) NOT NULL ,
- `name`      varchar(45) NOT NULL ,
+ `name`      text NOT NULL ,
  `level`     int NOT NULL ,
  `desc`      text NOT NULL ,
  `choosingAmount` int NOT NULL ,

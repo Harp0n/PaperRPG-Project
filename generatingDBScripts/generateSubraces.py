@@ -56,16 +56,16 @@ def generate():
                 _idAbility = ability["url"].split("/")[-1]
                 parameters.append(_idAbility)
                 cursor.execute(querySubraceAbilities,parameters)
-
-            if "from" in subrace["ability_bonus_options"]:
-                for ability in subrace["ability_bonus_options"]["from"]:
-                    parameters = []
-                    parameters.append(ability["bonus"])
-                    parameters.append(True)
-                    parameters.append(_idSubrace)
-                    _idAbility = ability["url"].split("/")[-1]
-                    parameters.append(_idAbility)
-                    cursor.execute(querySubraceAbilities,parameters)
+            if "ability_bonus_options" in subrace:
+                if "from" in subrace["ability_bonus_options"]:
+                    for ability in subrace["ability_bonus_options"]["from"]:
+                        parameters = []
+                        parameters.append(ability["bonus"])
+                        parameters.append(True)
+                        parameters.append(_idSubrace)
+                        _idAbility = ability["url"].split("/")[-1]
+                        parameters.append(_idAbility)
+                        cursor.execute(querySubraceAbilities,parameters)
 
     #       STARTING PROFICIENCIES
 
